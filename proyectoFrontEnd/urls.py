@@ -19,5 +19,5 @@ from acuafr import views as acuafr_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',acuafr_views.index, name='index'),
+    path('',acuafr_views.index, name='index'),
 ]
