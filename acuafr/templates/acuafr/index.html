@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>eStartup Bootstrap Template - Index</title>
+  <title>ACUA</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="https://i.ibb.co/ykTBsYr/logo.png" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -42,22 +42,20 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#body" class="scrollto"><span>e</span>Startup</a></h1>
+        <!--<h1><a href="#body" class="scrollto"><span>e</span>ACUA</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#body"><img src="assets/img/logo.png" alt="" title="" /></a>-->
+        <a href="#body"><img src="https://i.ibb.co/ykTBsYr/logo.png" height="40" width="40" alt="" title=""/></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Inicio</a></li>
-          <li><a href="#formulario">Formulario</a></li>
+          <li><a href="#formulario">Nuevo terreno</a></li>
+          <li><a href="#Eventos">Eventos</a></li>
           <li><a href="#about-us">¿Quienes somos?</a></li>
-          <li><a href="#features">No se que es esto</a></li>
           <li><a href="#screenshots">Móvil</a></li>
           <li><a href="#team">Equipo</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Crear cuenta</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -70,8 +68,38 @@
       <h2>¿Ya encontraste el lugar ideal?</h2>
 
       <!-- ======= Mapa ======= -->
-      
-      <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15865.940513699043!2d-75.57934!3d6.199548!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1590707260728!5m2!1ses!2sco" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      <style>
+       /* Set the size of the div element that contains the map */
+        #map {
+          height: 450px;  /* The height is 400 pixels */
+          width: 600px;  /* The width is the width of the web page */
+        }
+      </style>
+
+      <div id="map"></div>
+      <script>
+      // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        {% for formulario in arboles %}
+             var uluru = {lat: {{formulario.latitud}}, lng: {{formulario.altitud}}};
+        // The map, centered at Uluru
+            var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 15, center: uluru});
+        // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({position: uluru, map: map});
+         {% endfor %}
+        }
+      </script>
+      <!--Load the API from the specified URL
+      * The async attribute allows the browser to render the page while the API loads
+      * The key parameter will contain your own API key (which is not needed for this tutorial)
+      * The callback parameter executes the initMap() function
+      -->
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMzgzEpuEUCHMZA5fykDoEx1CoMG3F3qc&callback=initMap">
+      </script>
+      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15865.940513699043!2d-75.57934!3d6.199548!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1590707260728!5m2!1ses!2sco" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
       <!-- <img src="{% static 'assets/img/hero-img.png' %}" alt="Hero Imgs"> -->
       <h2> </h2>
       <a href="#get-started" class="btn-get-started scrollto">Get Started</a>
@@ -81,6 +109,7 @@
         <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>
       </div>
     </div>
+    
   </section><!-- End Hero Section -->
 
   <main id="main">
@@ -101,7 +130,7 @@
                 
                 <input type="text" name="pregunta1" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name"   placeholder="Pregunta 1: ¿Hay cableado cerca del terreno?" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br>
                 <input type="text" name="pregunta2" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name"  placeholder="Pregunta 2: ¿El terreno es público o privado?" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br>
-                <input type="text" name="pregunta3" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name"  placeholder="Pregunta 3: ¿Está felizmente soltero?" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br>
+                <input type="text" name="pregunta3" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name"  placeholder="Pregunta 3: ¿Queda cerca a una carretera?" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br>
                 <input type="text" name="latitud" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name"  placeholder="Latitud" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br>
                 <input type="text" name="altitud" style="width : 450px; heigth : 1px; text-align:center;" class="form-control" id="name" placeholder="Altitud" data-rule="minlen:4" data-msg="Please enter at least 4 chars" /> <br> 
                 <div class="text-center"><button type="submit">Adicionar</button></div>
@@ -148,7 +177,7 @@
                 </form>
               
               
-              {% for arbol in arboles1 %}
+              {% for arbol in arboles %}
               <ul class="list-group">
                 <li class="list-group-item">{{arbol.tipo}}; {{arbol.carac}}; {{arbol.direction}}; {{arbol.cupo}}</li>
               </ul> 
@@ -247,23 +276,23 @@
 
       <div class="container">
         <div class="section-title text-center">
-          <h2>App Gallery</h2>
-          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+          <h2>Mockups</h2>
+          <p class="separator">Imagenes del aplicativo desarrollado en Xamarin</p>
         </div>
       </div>
 
       <div class="container">
         <div class="owl-carousel owl-theme">
 
-          <div><img src="{% static 'assets/img/screen/1.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/2.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/3.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/4.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/5.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/6.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/6.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/7.jpg' %}" alt="img"></div>
-          <div><img src="{% static 'assets/img/screen/8.jpg' %}" alt="img"></div>
+          <div><img src="https://i.ibb.co/m9sMD9j/p1.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/NW0kz0S/p2.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/S7hgLbg/p3.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/PTh5NK2/p4.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/D8ztmWq/p5.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/nkZdfq9/p6.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/6g0XqzB/p7.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/FWXLcXf/p8.jpg" alt="img"></div>
+          <div><img src="https://i.ibb.co/G9jsMwB/p9.jpg" alt="img"></div>
 
         </div>
       </div>
@@ -289,8 +318,8 @@
       <div class="container">
         <div class="section-title text-center">
 
-          <h2>Team Member</h2>
-          <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+          <h2>Equipo de proyecto</h2>
+          <p class="separator">Integrantes de ACUA somos:</p>
 
         </div>
       </div>
@@ -300,64 +329,62 @@
 
           <div class="col-md-6 col-md-4 col-lg-3">
             <div class="team-block bottom">
-              <img src="{% static 'assets/img/team/1.jpg' %}" class="img-responsive" alt="img">
+              <img src="https://i.ibb.co/fQvWWvH/Mi-Cara-2.jpg" class="img-responsive" alt="img">
               <div class="team-content">
                 <ul class="list-unstyled">
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
-                <span>manager</span>
-                <h4>Kimberly Tran</h4>
+                <span>Ingenerio de sistemas</span>
+                <h4>Juan Sebastián Sanín</h4>
               </div>
             </div>
           </div>
 
           <div class="col-md-6 col-md-4 col-lg-3">
             <div class="team-block bottom">
-              <img src="{% static 'assets/img/team/2.jpg' %}" class="img-responsive" alt="img">
+              <img src="https://i.ibb.co/Msr6Rdn/Pe-a.jpg" class="img-responsive" alt="img">
               <div class="team-content">
                 <ul class="list-unstyled">
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
-                <span>manager</span>
-                <h4>Kimberly Tran</h4>
+                <span>Ingeniero de sistemas</span>
+                <h4>Juan Pablo Peña</h4>
               </div>
             </div>
           </div>
 
           <div class="col-md-6 col-md-4 col-lg-3">
             <div class="team-block bottom">
-              <img src="{% static 'assets/img/team/3.jpg' %}" class="img-responsive" alt="img">
+              <img src="https://i.ibb.co/hmPpfwL/Katherin.jpg" class="img-responsive" alt="img">
               <div class="team-content">
                 <ul class="list-unstyled">
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
-                <span>manager</span>
-                <h4>Kimberly Tran</h4>
+                <span>Ingeniera de sistemas</span>
+                <h4>Katherin Valencia</h4>
               </div>
             </div>
           </div>
-
           <div class="col-md-6 col-md-4 col-lg-3">
             <div class="team-block bottom">
-              <img src="{% static 'assets/img/team/4.jpg' %}" class="img-responsive" alt="img">
+              <img src="https://i.ibb.co/VNMKrzZ/PO.jpg" class="img-responsive" alt="img">
               <div class="team-content">
                 <ul class="list-unstyled">
                   <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
-                <span>manager</span>
-                <h4>Kimberly Tran</h4>
+                <span>Podruct Owner</span>
+                <h4>Adriana Calle Jordá</h4>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section><!-- End Team Section -->
